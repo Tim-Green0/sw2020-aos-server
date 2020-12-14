@@ -1,0 +1,25 @@
+package com.aos.tray;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * @author plusperson@gmail.com
+*/
+
+@Mapper
+public interface TrayMapper {
+//    public int count(Tray tray) throws Exception;
+    public List<Tray> list(Tray tray) throws Exception;
+    public Tray select(Tray tray) throws Exception;
+    public void insert(Tray tray) throws Exception;
+    public void update(Tray tray) throws Exception;
+//    public void delete(Tray tray) throws Exception;
+    
+    public List<Tray> selectAll() throws Exception;
+    public void deleteTray(Tray tray) throws Exception;
+    public void registTray(Tray tray) throws Exception;
+    public List<Tray> selectTrayNo() throws Exception;
+    public List<TrayInfo> crossSelect(Tray tray) throws Exception;
+}

@@ -1,0 +1,44 @@
+package com.aos.user;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService {
+	@Autowired
+	private UserMapper userMapper;
+	@Autowired
+	private HttpSession httpSession;
+
+	@Override
+	public String login(User user) {
+		String path = "/aos/login";
+
+		try {
+			User result = userMapper.select(user);
+			if (result == null) {
+				System.out.println("null 임");
+			} else {
+				if (user.getId().equals(result.getId()) && user.getPassword().equals(result.getPassword())) {
+					System.out.println("로그인 됨");
+					httpSession.setAttribute("Auth_id", user.getId());
+					path = "/aos/main";
+				} else {
+					System.out.println("로그인 안됨");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return path;
+
+	}
+
+	@Override
+	public void logout() {
+		httpSession.invalidate();
+	}
+
+}

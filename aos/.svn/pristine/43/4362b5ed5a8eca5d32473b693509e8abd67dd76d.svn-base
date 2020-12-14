@@ -1,0 +1,13 @@
+package com.aos.user;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+public interface UserService {
+	public String login(User user,HttpSession session);
+	public void logout(HttpSession session);
+	public List<Map<String, String>> prepareMain();
+	public void properties(); // test -> 프로퍼티스 파일 읽는거
+}

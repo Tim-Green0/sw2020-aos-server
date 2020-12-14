@@ -1,0 +1,20 @@
+package com.aos.user;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * @author plusperson@gmail.com
+*/
+
+@Mapper
+public interface UserMapper {
+	public User select(User user) throws Exception;
+	
+	public int count(User user) throws Exception;
+    public List<User> list(User user) throws Exception;
+    public void insert(User user) throws Exception;
+    public void update(User user) throws Exception;
+    public void delete(User user) throws Exception;
+}
